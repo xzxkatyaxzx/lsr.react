@@ -1,25 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+import Card from "./Card";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [total, setTotal] = useState(0);
+
+    let updateData = (key, value) => {
+        setTotal(total + parseInt(value));
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo"/>
+                <Card id={0} updateData={updateData}/>
+                <Card id={1} updateData={updateData}/>
+                <Card id={2} updateData={updateData}/>
+                <p>
+                    Результат: {total}
+                </p>
+            </header>
+        </div>
+    );
 }
 
 export default App;
